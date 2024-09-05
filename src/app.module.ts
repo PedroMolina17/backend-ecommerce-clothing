@@ -5,8 +5,9 @@ import { ImageCoverModule } from "./image-cover/image-cover.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
-import { ProductSizeModule } from './product-size/product-size.module';
-import { CartItemModule } from './cart-item/cart-item.module';
+import { ProductSizeModule } from "./product-size/product-size.module";
+import { CartItemModule } from "./cart-item/cart-item.module";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [
@@ -20,6 +21,9 @@ import { CartItemModule } from './cart-item/cart-item.module';
       serveStaticOptions: {
         index: false,
       },
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
     }),
     ProductSizeModule,
     CartItemModule,
